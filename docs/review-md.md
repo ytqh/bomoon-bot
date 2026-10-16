@@ -2,7 +2,7 @@
 
 `REVIEW.md` lives at the root of the reviewed repository. It is Markdown with an optional YAML front matter. The front matter tells bomoon-bot which files to load and which questions to answer; the body is free guidance for the reviewer.
 
-bomoon-bot reads `REVIEW.md` and every file it loads **at the pull request's base commit**.
+bomoon-bot reads `REVIEW.md` and every file it loads **from the current tip of the pull request's base branch** (for example `main` at review time), never from the PR itself. A rules change merged to the base branch applies to open PRs at once.
 
 ## Front matter
 
