@@ -21,7 +21,7 @@ sequenceDiagram
     U->>GH: comment "@bomoon-bot review" on a PR
     GH->>B: webhook (signed)
     B->>GH: check run in progress
-    B->>GH: read REVIEW.md and its rule files at the PR's base commit
+    B->>GH: read REVIEW.md and its rule files from the base branch
     B->>GH: read the PR head and diff
     B->>B: agent answers each rule question, explores the code read-only
     B->>GH: one review on the PR, check run completed
@@ -31,7 +31,7 @@ sequenceDiagram
 
 ## Trust and safety
 
-- **Rules come from the base commit**, never from the PR, so a PR cannot change the rules it is reviewed by. To change the rules, merge a change to `REVIEW.md` first.
+- **Rules come from the base branch** (its current tip), never from the PR, so a PR cannot change the rules it is reviewed by. To change the rules, merge a change to `REVIEW.md` first.
 - **Read-only exploration.** The reviewer reads the diff and the code at the PR head with read-only file tools confined to its workspace. It never runs code from the PR.
 - **What bomoon-bot writes:** one check run and one review comment per request. It does not approve, request changes, push, or merge (yet).
 - **Who can trigger:** only allowed users; comments from bots are ignored.
