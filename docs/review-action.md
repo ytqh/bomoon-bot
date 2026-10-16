@@ -4,7 +4,7 @@ The `review/` Action requests a bomoon-bot App review and waits for its check. I
 
 ## Workflow
 
-The Action is not yet released. Replace `<reviewed-commit-sha>` with a reviewed commit containing `review/` (or use `v1` once published). Set the repository variable `BOMOON_REVIEW_SERVICE_URL` to your **trusted HTTPS service origin**. There is no default service URL.
+Use `@main` to track the latest merged Action. The workflow becomes available after `review/` is merged to `main` and the compatible service is deployed. Set the repository variable `BOMOON_REVIEW_SERVICE_URL` to your **trusted HTTPS service origin**. There is no default service URL.
 
 ```yaml
 name: Review
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: ytqh/bomoon-bot/review@<reviewed-commit-sha>
+      - uses: ytqh/bomoon-bot/review@main
         id: review
         with:
           service-url: ${{ vars.BOMOON_REVIEW_SERVICE_URL }}
