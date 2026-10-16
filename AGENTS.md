@@ -1,8 +1,8 @@
-# bom
+# bomoon-bot
 
 ## Goal
 
-The public entrance of the bom GitHub App: the App definition, the `REVIEW.md` rules format, and (later) a GitHub Action. The review backend is a private service; nothing in this repo may depend on its code.
+The public entrance of the bomoon-bot GitHub App: the App definition, the `REVIEW.md` rules format, and (later) a GitHub Action. The review backend is a private service; nothing in this repo may depend on its code.
 
 ## Rules
 

@@ -1,8 +1,8 @@
 # REVIEW.md format
 
-`REVIEW.md` lives at the root of the reviewed repository. It is Markdown with an optional YAML front matter. The front matter tells bom which files to load and which questions to answer; the body is free guidance for the reviewer.
+`REVIEW.md` lives at the root of the reviewed repository. It is Markdown with an optional YAML front matter. The front matter tells bomoon-bot which files to load and which questions to answer; the body is free guidance for the reviewer.
 
-bom reads `REVIEW.md` and every file it loads **at the pull request's base commit**.
+bomoon-bot reads `REVIEW.md` and every file it loads **at the pull request's base commit**.
 
 ## Front matter
 
@@ -24,4 +24,4 @@ Plain Markdown: what a real problem means in this repo, examples, what never to 
 
 ## Output
 
-One review on the PR with the header `🤖 bom review (rules: REVIEW.md@<base sha>) @ <head sha>`, one line per question (`ok`, `n/a`, or a finding that cites the file, the rule and the quoted rule text), then any other findings.
+One review on the PR with the header `🤖 bomoon-bot review (rules: REVIEW.md@<base sha>) @ <head sha>`, one line per question (`ok`, `n/a`, or a finding that cites the file, the rule and the quoted rule text), then any other findings.

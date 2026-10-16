@@ -1,6 +1,6 @@
 {
-  "name": "bom",
-  "url": "https://github.com/ytqh/bom",
+  "name": "bomoon-bot",
+  "url": "https://github.com/ytqh/bomoon-bot",
   "hook_attributes": { "url": "https://pa-runtime-production.up.railway.app/github/webhook" },
   "public": true,
   "default_permissions": {

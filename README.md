@@ -1,12 +1,12 @@
-# bom
+# bomoon-bot
 
-bom is a GitHub App that reviews pull requests **with your repository's own rules**. You keep the rules in a `REVIEW.md` at the root of your repo; bom reads them, explores the code, and posts one review on the PR.
+bomoon-bot is a GitHub App that reviews pull requests **with your repository's own rules**. You keep the rules in a `REVIEW.md` at the root of your repo; bomoon-bot reads them, explores the code, and posts one review on the PR.
 
 ## Install
 
-1. Install the App on your account or organization: https://github.com/apps/bom/installations/new — pick the repositories.
+1. Install the App on your account or organization: https://github.com/apps/bomoon-bot/installations/new — pick the repositories.
 2. Add a `REVIEW.md` to the default branch (format: [docs/review-md.md](docs/review-md.md), example: [examples/REVIEW.md](examples/REVIEW.md)).
-3. On a pull request, comment `@bom review`. bom answers with a check run and one review.
+3. On a pull request, comment `@bomoon-bot review`. bomoon-bot answers with a check run and one review.
 
 No `REVIEW.md` means a generic review (correctness, security, clear bugs).
 
@@ -17,8 +17,8 @@ sequenceDiagram
     autonumber
     participant U as You
     participant GH as GitHub
-    participant B as bom service
-    U->>GH: comment "@bom review" on a PR
+    participant B as bomoon-bot service
+    U->>GH: comment "@bomoon-bot review" on a PR
     GH->>B: webhook (signed)
     B->>GH: check run in progress
     B->>GH: read REVIEW.md and its rule files at the PR's base commit
@@ -33,10 +33,10 @@ sequenceDiagram
 
 - **Rules come from the base commit**, never from the PR, so a PR cannot change the rules it is reviewed by. To change the rules, merge a change to `REVIEW.md` first.
 - **Read-only exploration.** The reviewer reads the diff and the code at the PR head with read-only file tools confined to its workspace. It never runs code from the PR.
-- **What bom writes:** one check run and one review comment per request. It does not approve, request changes, push, or merge (yet).
+- **What bomoon-bot writes:** one check run and one review comment per request. It does not approve, request changes, push, or merge (yet).
 - **Who can trigger:** only allowed users; comments from bots are ignored.
 - **Permissions:** contents read, pull requests write (to post the review), checks write, issues read, metadata read.
 
 ## Status
 
-Early. Planned: a GitHub Action entrance (`uses: ytqh/bom/review@v1`) with the same `REVIEW.md`, verdicts (approve / request changes) controlled by the rules, and rule tests that replay past PRs.
+Early. Planned: a GitHub Action entrance (`uses: ytqh/bomoon-bot/review@v1`) with the same `REVIEW.md`, verdicts (approve / request changes) controlled by the rules, and rule tests that replay past PRs.
