@@ -1,0 +1,19 @@
+name: bomoon-bot review
+description: Request a bomoon-bot App review and wait for its check, without checking out code.
+inputs:
+  service-url:
+    description: Trusted HTTPS origin of the review service (no path, query, or fragment).
+    required: true
+  github-token:
+    description: Token used only to read checks and pull requests at api.github.com.
+    default: ${{ github.token }}
+outputs:
+  conclusion:
+    description: App check conclusion, or skipped for a draft.
+  check-url:
+    description: GitHub URL of the App check (empty for a skipped draft).
+  head-sha:
+    description: Pull request head SHA reviewed.
+runs:
+  using: node24
+  main: index.mjs

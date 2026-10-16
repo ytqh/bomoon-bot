@@ -27,16 +27,16 @@ sequenceDiagram
     B->>GH: one review on the PR, check run completed
 ```
 
-- The App definition is in [app/manifest.json](app/manifest.json). The review runs on a hosted backend; this repo holds the public interface: the App, the rules format, and (next) a GitHub Action.
+- The App definition is in [app/manifest.json](app/manifest.json). The review runs on a hosted backend; this repo holds the public interface: the App, the rules format, and the [Review Action](docs/review-action.md).
 
 ## Trust and safety
 
 - **Rules come from the base branch** (its current tip), never from the PR, so a PR cannot change the rules it is reviewed by. To change the rules, merge a change to `REVIEW.md` first.
 - **Read-only exploration.** The reviewer reads the diff and the code at the PR head with read-only file tools confined to its workspace. It never runs code from the PR.
 - **What bomoon-bot writes:** one check run and one review comment per request. It does not approve, request changes, push, or merge (yet).
-- **Who can trigger:** only allowed users; comments from bots are ignored.
+- **Who can trigger:** comment requests are limited to allowed users; comments from bots are ignored. The Action uses GitHub OIDC and requires the App to be installed on the repository; your workflow chooses its triggers.
 - **Permissions:** contents read, pull requests write (to post the review), checks write, issues read, metadata read.
 
 ## Status
 
-Early. Planned: a GitHub Action entrance (`uses: ytqh/bomoon-bot/review@v1`) with the same `REVIEW.md`, verdicts (approve / request changes) controlled by the rules, and rule tests that replay past PRs.
+Early. The standalone [Review Action](docs/review-action.md) is implemented but not yet released or live-verified. It uses the same `REVIEW.md` and reports the App check conclusion. Planned: verdicts (approve / request changes) controlled by the rules, and rule tests that replay past PRs.
