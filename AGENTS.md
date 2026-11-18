@@ -2,10 +2,10 @@
 
 ## Goal
 
-The public entrance of the bomoon-bot GitHub App: the App definition, the `REVIEW.md` rules format, and (later) a GitHub Action. The review backend is a private service; nothing in this repo may depend on its code.
+The public interface of the bomoon-bot GitHub App for pull request review. This repo owns the App definition, the `REVIEW.md` rules format, and the [Review Action](docs/review-action.md). The hosted backend is private and stays outside this repo's dependencies.
 
 ## Rules
 
 - This repo is public. Never commit secrets, backend URLs other than the App's webhook, private repo names, or internal design notes.
-- The `REVIEW.md` format in `docs/review-md.md` is a public contract: a change that breaks existing `REVIEW.md` files needs a version bump and Aki's review.
-- `app/manifest.json` must match the live App's permissions and events; widen permissions only with Aki's review.
+- The [REVIEW.md format](docs/review-md.md) is a public contract. Breaking changes need a version bump and repository-owner review.
+- `app/manifest.json` must match the live App's permissions and events. Widen permissions only with repository-owner review.
